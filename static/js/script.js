@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function() {
   let fileNameDisplay = document.getElementById("file-name");
   let dropText = document.getElementById("drop-text");
 
+  // Extensiones de audio permitidas
+  const audioExtensions = ["mp3", "wav", "ogg", "flac", "aac", "m4a"];
+
   // Cuando se hace clic en el área, abrir el selector de archivos
   dropArea.addEventListener("click", () => fileInput.click());
 
@@ -24,17 +27,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
       let files = e.dataTransfer.files;
       if (files.length > 0) {
-          fileInput.files = files;
-          mostrarNombreArchivo(files[0].name);
+          validarArchivo(files[0]);
       }
   });
 
   // Mostrar el nombre del archivo cuando se selecciona manualmente
   fileInput.addEventListener("change", function() {
       if (fileInput.files.length > 0) {
-          mostrarNombreArchivo(fileInput.files[0].name);
+          validarArchivo(fileInput.files[0]);
       }
   });
+
+  function validarArchivo(file) {
+      let extension = file.name.split(".").pop().toLowerCase();
+      if (audioExtensions.includes(extension)) {
+          mostrarNombreArchivo(file.name);
+      } else {
+          alert("Por favor, selecciona un archivo de audio válido.");
+          fileInput.value = ""; // Limpia el input
+          fileNameDisplay.textContent = "";
+          dropText.textContent = "Arrastra tu archivo aquí o haz clic para seleccionarlo";
+      }
+  }
 
   function mostrarNombreArchivo(nombre) {
       fileNameDisplay.textContent = `Archivo seleccionado: ${nombre}`;
