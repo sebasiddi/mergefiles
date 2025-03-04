@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* SCSS HEX */
+/* SCSS Gradient */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 50px;
+  background: linear-gradient(315deg, #03045e, #023e8a, #0077b6, #0096c7, #00b4d8, #48cae4, #90e0ef, #ade8f4, #caf0f8);
+}
+body .mainTitle {
+  font-size: larger;
+  color: #03045e;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+form input {
+  padding: 1rem;
+  border-radius: 10px;
+  width: 20%;
+}
+form button {
+  padding: 1rem;
+  border-radius: 10px;
+  background: white;
+  width: 20%;
+}
+form #drop-area {
+  width: 80%;
+  height: 50vh;
+  border: 2px dashed #023e8a;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  background: #ade8f4;
+}
+form #drop-area p {
+  color: #023e8a;
+  font-weight: bold;
+}
+form #drop-area.highlight {
+  border-color: #0077b6;
+  background-color: #90e0ef;
+}/*# sourceMappingURL=style.css.map */

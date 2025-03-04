@@ -3,12 +3,16 @@ from pydub import AudioSegment
 import os
 import shutil
 from datetime import datetime
+import sass
+
 
 app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
 OUTPUT_FOLDER = "output"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+
+sass.compile(dirname=('static/scss', 'static/css'), output_style='compressed')
 
 # Sonidos predefinidos
 INTRO_PATH = "static/intro.mp3"
