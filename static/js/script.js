@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function mostrarNombreArchivo(nombre) {
-      fileNameDisplay.textContent = `Archivo seleccionado: ${nombre}`;
+      /*fileNameDisplay.textContent = `Archivo seleccionado: ${nombre}`;*/
       dropText.textContent = `${nombre} listo para subir`;
   }
 });

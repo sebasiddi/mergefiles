@@ -3,24 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir Archivo de Audio</title>
+    <title>🔊Agregar Ráfagas RCV</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo_rcv.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
 <body>
-    <h1 class="mainTitle">Subir Archivo de Audio</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <input type="text" name="program_name" placeholder="Nombre o sigla del programa">
-<!--         <input type="file" name="file" required>
- -->        
- <div id="drop-area">
-    <p id="drop-text">Arrastra tu archivo aquí o haz clic para seleccionarlo</p>
-    <input type="file" id="fileInput" name="file" hidden>
-</div>
-<p id="file-name"></p> <!-- Aquí se mostrará el nombre del archivo -->
+    <header>
 
- <button type="submit">Subir y procesar</button>
-    </form>
+        <h1 class="mainTitle">Agregar ráfagas de inicio y de cierre</h1>
+    </header>
+    <main>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="text" name="program_name" placeholder="Nombre o sigla del programa">
+            
+            <div id="drop-area">
+                <p id="drop-text">Arrastra tu archivo aquí o haz clic para seleccionarlo</p>
+                <input type="file" id="fileInput" name="file" hidden>
+            </div>
+            <p id="file-name"></p> <!-- Aquí se mostrará el nombre del archivo -->
+            <button type="submit">Subir y procesar</button>
+        </form>
+    </main>
+
+    <footer>
+        <h3>Desarrollado por <a href="mailto:ssiddi@gmail.com">sebasiddi</a></h3>
+    </footer>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

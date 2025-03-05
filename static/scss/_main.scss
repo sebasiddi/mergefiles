@@ -1,52 +1,65 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  margin: 50px;
+  height: 100%;
   background: $gradient-bottom-left;
-  .mainTitle{
-    font-size: larger;
-    color: $federal-blue;
-  }
-}
-form {
+  background: $gradiente-nuevo;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 2rem;
-  margin-top: 1rem;
-  gap: 1rem;
-  input{
-    padding: 1rem;
-    border-radius: 10px;
-    width: 20%;
-  };
-  button{
-    padding: 1rem;
-    border-radius: 10px;
-    background: white;
-    width: 20%;
-  }
-
-  #drop-area {
-    width: 80%;
-    height: 50vh;
-    border: 2px dashed $marian-blue;
-    border-radius: 10px;
+}
+main{
+  width: 100%;
+  form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-    cursor: pointer;
-    background: $non-photo-blue-2;
-    p {
-      color:$marian-blue;
-      font-weight: bold;
+    align-items: center;
+    padding: 2rem;
+    margin-top: 1rem;
+    gap: 1rem;
+    width: 100%;
+    input{
+      padding: 1rem;
+      border-radius: 10px;
+      width: 20%;
+    };
+    button{
+      padding: 1rem;
+      border-radius: 10px;
+      background: $silver-lake-blue;
+      color: $rich-black;
+      width: 20%;
+      transition: 300ms;
     }
-  }
-  #drop-area.highlight {
-    border-color: $honolulu-blue;
-    background-color: $non-photo-blue;
+    button:hover{
+      background: $rich-black;
+      color: $silver-lake-blue;
+      transition: 300ms;
+      cursor: pointer;
+    }
+  
+    #drop-area {
+      width: 80%;
+      height: 50vh;
+      border: 2px dashed $rich-black;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      background: $silver-lake-blue;
+      p {
+        color:$rich-black;
+        font-weight: bold;
+      }
+    }
+    #drop-area.highlight {
+      border-color: $honolulu-blue;
+      background-color: $platinum;
+      transition: 300ms;
+    }
   }
 }

@@ -5,7 +5,6 @@ import shutil
 from datetime import datetime
 import sass
 
-
 app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
 OUTPUT_FOLDER = "output"
@@ -17,6 +16,7 @@ sass.compile(dirname=('static/scss', 'static/css'), output_style='compressed')
 # Sonidos predefinidos
 INTRO_PATH = "static/intro.mp3"
 OUTRO_PATH = "static/outro.mp3"
+
 @app.route("/", methods=["GET", "POST"])
 def upload_file():
     if request.method == "POST":
@@ -25,11 +25,13 @@ def upload_file():
         if file:
             fecha = datetime.now().strftime("%y%m%d")  # Formato AAMMDD
             safe_program_name = "".join(c for c in program_name if c.isalnum() or c in " _-").strip()
+            original_name, _ = os.path.splitext(file.filename)  # Extrae el nombre sin la extensión
             
+            # Formato del nombre de archivo con " - "
             if safe_program_name:
-                new_filename = f"{fecha}_{safe_program_name}_{file.filename}"
+                new_filename = f"{fecha} - {safe_program_name} - {original_name}.wav"
             else:
-                new_filename = f"{fecha}_{file.filename}"
+                new_filename = f"{fecha} - {original_name}.wav"
 
             filepath = os.path.join(UPLOAD_FOLDER, file.filename)
             output_path = os.path.join(OUTPUT_FOLDER, new_filename)
@@ -40,11 +42,16 @@ def upload_file():
             outro = AudioSegment.from_file(OUTRO_PATH)
             audio = AudioSegment.from_file(filepath)
             
+            # Convertir a 44100 Hz, 16 bits, estéreo
+            intro = intro.set_frame_rate(44100).set_sample_width(2).set_channels(2)
+            outro = outro.set_frame_rate(44100).set_sample_width(2).set_channels(2)
+            audio = audio.set_frame_rate(44100).set_sample_width(2).set_channels(2)
+            
             # Concatenar audios
             final_audio = intro + audio + outro
             
-            # Guardar archivo procesado
-            final_audio.export(output_path, format="mp3")
+            # Guardar archivo procesado en formato WAV
+            final_audio.export(output_path, format="wav")
 
             # Enviar archivo al usuario
             return send_file(output_path, as_attachment=True)

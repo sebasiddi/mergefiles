@@ -8,18 +8,47 @@
 
 /* SCSS HEX */
 /* SCSS Gradient */
+/*
+$gradient-top: linear-gradient(0deg, #03045eff, #023e8aff, #0077b6ff, #0096c7ff, #00b4d8ff, #48cae4ff, #90e0efff, #ade8f4ff, #caf0f8ff);
+$gradient-right: linear-gradient(90deg, #03045eff, #023e8aff, #0077b6ff, #0096c7ff, #00b4d8ff, #48cae4ff, #90e0efff, #ade8f4ff, #caf0f8ff);
+$gradient-bottom: linear-gradient(180deg, #03045eff, #023e8aff, #0077b6ff, #0096c7ff, #00b4d8ff, #48cae4ff, #90e0efff, #ade8f4ff, #caf0f8ff);
+$gradient-left: linear-gradient(270deg, #03045eff, #023e8aff, #0077b6ff, #0096c7ff, #00b4d8ff, #48cae4ff, #90e0efff, #ade8f4ff, #caf0f8ff);
+$gradient-top-right: linear-gradient(45deg, #03045eff, #023e8aff, #0077b6ff, #0096c7ff, #00b4d8ff, #48cae4ff, #90e0efff, #ade8f4ff, #caf0f8ff);
+$gradient-bottom-right: linear-gradient(135deg, #03045eff, #023e8aff, #0077b6ff, #0096c7ff, #00b4d8ff, #48cae4ff, #90e0efff, #ade8f4ff, #caf0f8ff);
+$gradient-top-left: linear-gradient(225deg, #03045eff, #023e8aff, #0077b6ff, #0096c7ff, #00b4d8ff, #48cae4ff, #90e0efff, #ade8f4ff, #caf0f8ff);
+$gradient-bottom-left: linear-gradient(315deg, #03045eff, #023e8aff, #0077b6ff, #0096c7ff, #00b4d8ff, #48cae4ff, #90e0efff, #ade8f4ff, #caf0f8ff);
+$gradient-radial: radial-gradient(#03045eff, #023e8aff, #0077b6ff, #0096c7ff, #00b4d8ff, #48cae4ff, #90e0efff, #ade8f4ff, #caf0f8ff);
+*/
+/* SCSS RGB */
+/* SCSS Gradient */
+header {
+  width: 100%;
+  text-align: center;
+}
+header .mainTitle {
+  font-size: larger;
+  padding: 2rem;
+  width: 100%;
+  color: rgb(119, 141, 169);
+  text-align: center;
+  background: rgba(13, 27, 42, 0.526);
+}
+
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  margin: 50px;
-  background: linear-gradient(315deg, #03045e, #023e8a, #0077b6, #0096c7, #00b4d8, #48cae4, #90e0ef, #ade8f4, #caf0f8);
-}
-body .mainTitle {
-  font-size: larger;
-  color: #03045e;
+  height: 100%;
+  background: linear-gradient(315deg, #0d1b2a, #1b263b, #415a77, #778da9, #e0e1dd);
+  background: linear-gradient(315deg, #778da9, #e0e1dd);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-form {
+main {
+  width: 100%;
+}
+main form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,22 +56,31 @@ form {
   padding: 2rem;
   margin-top: 1rem;
   gap: 1rem;
+  width: 100%;
 }
-form input {
+main form input {
   padding: 1rem;
   border-radius: 10px;
   width: 20%;
 }
-form button {
+main form button {
   padding: 1rem;
   border-radius: 10px;
-  background: white;
+  background: rgb(119, 141, 169);
+  color: rgb(13, 27, 42);
   width: 20%;
+  transition: 300ms;
 }
-form #drop-area {
+main form button:hover {
+  background: rgb(13, 27, 42);
+  color: rgb(119, 141, 169);
+  transition: 300ms;
+  cursor: pointer;
+}
+main form #drop-area {
   width: 80%;
   height: 50vh;
-  border: 2px dashed #023e8a;
+  border: 2px dashed rgb(13, 27, 42);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -50,13 +88,32 @@ form #drop-area {
   justify-content: center;
   text-align: center;
   cursor: pointer;
-  background: #ade8f4;
+  background: rgb(119, 141, 169);
 }
-form #drop-area p {
-  color: #023e8a;
+main form #drop-area p {
+  color: rgb(13, 27, 42);
   font-weight: bold;
 }
-form #drop-area.highlight {
+main form #drop-area.highlight {
   border-color: #0077b6;
-  background-color: #90e0ef;
+  background-color: rgb(224, 225, 221);
+  transition: 300ms;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: baseline;
+  background: rgba(0, 0, 0, 0.745);
+  width: 100%;
+  height: 20%;
+  padding: 3rem;
+}
+footer h3 {
+  color: white;
+}
+footer h3 a {
+  color: white;
+  text-decoration: none;
 }/*# sourceMappingURL=style.css.map */
