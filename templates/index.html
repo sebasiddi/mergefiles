@@ -6,25 +6,32 @@
     <title>🔊Agregar Ráfagas RCV</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo_rcv.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
 </head>
 <body>
     <header>
-
         <h1 class="mainTitle">Agregar ráfagas de inicio y de cierre</h1>
     </header>
     <main>
-
         <form method="POST" enctype="multipart/form-data">
             <input type="text" name="program_name" placeholder="Nombre o sigla del programa">
-            
+        
             <div id="drop-area">
                 <p id="drop-text">Arrastra tu archivo aquí o haz clic para seleccionarlo</p>
                 <input type="file" id="fileInput" name="file" hidden>
             </div>
             <p id="file-name"></p> <!-- Aquí se mostrará el nombre del archivo -->
+        
+            <label>
+                <input type="checkbox" name="transcribe"> Generar transcripción
+            </label>
+        
+            <label>
+                <input type="checkbox" name="download_audio"> Descargar audio procesado
+            </label>
+        
             <button type="submit">Subir y procesar</button>
         </form>
+        
     </main>
 
     <footer>
@@ -33,6 +40,3 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
-
-
-
