@@ -14,29 +14,91 @@
     <main>
         <form method="POST" enctype="multipart/form-data">
             <input type="text" name="program_name" placeholder="Nombre o sigla del programa">
-        
-            <div id="drop-area">
-                <p id="drop-text">Arrastra tu archivo aquí o haz clic para seleccionarlo</p>
-                <input type="file" id="fileInput" name="file" hidden>
+            <div class="files">
+                <div class="opciones" id="twitter">
+
+                    <label for="twitter_url">O ingresa un enlace de Twitter:</label>
+                    <input type="url" id="twitter_url" name="twitter_url" placeholder="https://twitter.com/ejemplo/status/1234567890">
+                    <label>
+                        <input type="checkbox" id="enable_trim" name="enable_trim">
+                        Habilitar corte de video
+                      </label>
+                      
+                      <div id="trim_inputs" style="display: none;">
+                        <label for="start_h">Inicio:</label>
+                        <input type="number" id="start_h" placeholder="hh" min="0"> :
+                        <input type="number" id="start_m" placeholder="mm" min="0" max="59"> :
+                        <input type="number" id="start_s" placeholder="ss" min="0" max="59">
+                      
+                        <label for="end_h">Fin:</label>
+                        <input type="number" id="end_h" placeholder="hh" min="0"> :
+                        <input type="number" id="end_m" placeholder="mm" min="0" max="59"> :
+                        <input type="number" id="end_s" placeholder="ss" min="0" max="59">
+                      
+                        <input type="hidden" id="start_time" name="start_time">
+                        <input type="hidden" id="end_time" name="end_time">
+                      </div>
+                </div>
+                
+                <div class="opciones" id="drop-area">
+                    <p id="drop-text">Arrastra tu archivo aquí o haz clic para seleccionarlo</p>
+                    <input type="file" id="fileInput" name="file" hidden>
+                </div>
+                <p id="file-name"></p> <!-- Aquí se mostrará el nombre del archivo -->
+    
             </div>
-            <p id="file-name"></p> <!-- Aquí se mostrará el nombre del archivo -->
-        
+            
             <label>
                 <input type="checkbox" name="transcribe"> Generar transcripción
             </label>
-        
+
             <label>
                 <input type="checkbox" name="download_audio"> Descargar audio procesado
             </label>
         
+
             <button type="submit">Subir y procesar</button>
         </form>
-        
     </main>
 
     <footer>
         <h3>Desarrollado por <a href="mailto:ssiddi@gmail.com">sebasiddi</a></h3>
     </footer>
+    <script>
+        document.getElementById("enable_trim").addEventListener("change", function() {
+          document.getElementById("trim_inputs").style.display = this.checked ? "block" : "none";
+        });
+      
+        function convertToSeconds(h, m, s) {
+          return (parseInt(h) || 0) * 3600 + (parseInt(m) || 0) * 60 + (parseInt(s) || 0);
+        }
+      
+        function updateTimeInputs() {
+          document.getElementById("start_time").value = convertToSeconds(
+            document.getElementById("start_h").value,
+            document.getElementById("start_m").value,
+            document.getElementById("start_s").value
+          );
+      
+          document.getElementById("end_time").value = convertToSeconds(
+            document.getElementById("end_h").value,
+            document.getElementById("end_m").value,
+            document.getElementById("end_s").value
+          );
+        }
+      
+        document.querySelectorAll("#trim_inputs input").forEach(input => {
+          input.addEventListener("input", updateTimeInputs);
+        });
+      </script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
+
+
+
+
+
+  
+
+  

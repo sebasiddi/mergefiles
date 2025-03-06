@@ -22,8 +22,17 @@ main{
     input{
       padding: 1rem;
       border-radius: 10px;
-      width: 20%;
     };
+    .files{
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 1rem;
+      .opciones{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
     button{
       padding: 1rem;
       border-radius: 10px;
@@ -49,8 +58,9 @@ main{
       align-items: center;
       justify-content: center;
       text-align: center;
+      overflow: hidden;
       cursor: pointer;
-      background: $silver-lake-blue;
+      background: rgb(236, 235, 235);
       p {
         color:$rich-black;
         font-weight: bold;
